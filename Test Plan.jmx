@@ -254,17 +254,17 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-  &quot;firstName&quot;: &quot;${firstName}&quot;,&#xd;
-  &quot;lastName&quot;: &quot;${lastName}&quot;,&#xd;
-  &quot;birthdate&quot;: ${birthdate}, &#xd;
-  &quot;email&quot;: &quot;${email}&quot;,&#xd;
-  &quot;phone&quot;: ${phone},     &#xd;
-  &quot;street1&quot;: &quot;${street1}&quot;,&#xd;
-  &quot;street2&quot;: &quot;${street2}&quot;,&#xd;
-  &quot;city&quot;: &quot;${city}&quot;,&#xd;
-  &quot;stateProvince&quot;: &quot;${stateProvince}&quot;,&#xd;
-  &quot;postalCode&quot;: ${postalCode}, &#xd;
-  &quot;country&quot;: &quot;${country}&quot;&#xd;
+    &quot;firstName&quot;: &quot;John&quot;,&#xd;
+    &quot;lastName&quot;: &quot;Doe&quot;,&#xd;
+    &quot;birthdate&quot;: &quot;1970-01-01&quot;,&#xd;
+    &quot;email&quot;: &quot;jdoe@fake.com&quot;,&#xd;
+    &quot;phone&quot;: &quot;8005555555&quot;,&#xd;
+    &quot;street1&quot;: &quot;1 Main St.&quot;,&#xd;
+    &quot;street2&quot;: &quot;Apartment A&quot;,&#xd;
+    &quot;city&quot;: &quot;Anytown&quot;,&#xd;
+    &quot;stateProvince&quot;: &quot;KS&quot;,&#xd;
+    &quot;postalCode&quot;: &quot;12345&quot;,&#xd;
+    &quot;country&quot;: &quot;USA&quot;&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -286,11 +286,11 @@
             </HeaderManager>
             <hashTree/>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="contact data">
-              <stringProp name="filename">/Users/bahtiarekapermana/Developer/Sanber63-PerformanceTest/add contact.csv</stringProp>
+              <stringProp name="filename">/Users/bahtiarekapermana/Developer/Sanber63-PerformanceTest/contactdata.csv</stringProp>
               <stringProp name="fileEncoding">UTF-8</stringProp>
               <stringProp name="variableNames">firstName,lastName,birthdate,email,phone,street1,street2,city,stateProvince,postalCode,country</stringProp>
               <boolProp name="ignoreFirstLine">true</boolProp>
-              <stringProp name="delimiter">;</stringProp>
+              <stringProp name="delimiter">,</stringProp>
               <boolProp name="quotedData">false</boolProp>
               <boolProp name="recycle">true</boolProp>
               <boolProp name="stopThread">false</boolProp>
@@ -298,8 +298,24 @@
             </CSVDataSet>
             <hashTree/>
           </hashTree>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor">
+            <stringProp name="JSONPostProcessor.referenceNames">_id</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$._id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="94650">_id</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Contact">
-            <stringProp name="HTTPSampler.path">${conPath}/</stringProp>
+            <stringProp name="HTTPSampler.path">${conPath}/${_id}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -334,7 +350,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Content-Type</stringProp>
@@ -349,7 +365,7 @@
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT Update Contact">
-            <stringProp name="HTTPSampler.path">${conPath}/</stringProp>
+            <stringProp name="HTTPSampler.path">${conPath}/${_id}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">PUT</stringProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -392,7 +408,7 @@
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE Contact List">
-            <stringProp name="HTTPSampler.path">${conPath}/</stringProp>
+            <stringProp name="HTTPSampler.path">${conPath}/${_id}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">DELETE</stringProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
