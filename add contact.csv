@@ -1,0 +1,6 @@
+firstName;lastName;birthdate;email;phone;street1;street2;city;stateProvince;postalCode;country
+Isabella;Rodriguez;1995-05-10;isabella.rodriguez@fakemail.com;5551234567;45 Elm St.;;Springfield;IL;62701;USA
+David;Lee;1988-11-22;david.lee@fakemail.com;5559876543;10 Oak Ave.;Unit 2B;Riverdale;NY;10463;USA
+Sofia;Garcia;2002-03-05;sofia.garcia@fakemail.com;5555678901;78 Maple Dr.;;Hillside;NJ;07201;USA
+Ethan;Kim;1990-09-18;ethan.kim@fakemail.com;5552345678;23 Pine Ln.;Suite 300;Valleyview;CA;90210;USA
+Ava;Nguyen;2005-07-02;ava.nguyen@fakemail.com;5558901234;90 Willow Rd.;;Greenfield;MA;01234;USA
